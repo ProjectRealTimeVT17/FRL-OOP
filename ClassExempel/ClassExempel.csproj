@@ -44,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Delegate\WriteToConsole.cs" />
+    <Compile Include="Delegate\WriteToConsoleDelegate.cs" />
+    <Compile Include="Delegate\WriteToConsoleEventArgs.cs" />
     <Compile Include="Model\Cat.cs" />
     <Compile Include="Model\Dog.cs" />
     <Compile Include="Model\Gender.cs" />

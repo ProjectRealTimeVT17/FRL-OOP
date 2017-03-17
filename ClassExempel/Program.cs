@@ -19,9 +19,10 @@ namespace ClassExempel
 
             Output output = new Output();
 
-            WriteToConsole wtc = new WriteToConsole(output.ReportToBoss1);
+            WriteToConsoleDelegate wtc = new WriteToConsoleDelegate(output.ReportToBoss1);
             wtc += output.ReportToBoss2;
-            myDog.OnValueChange = wtc;
+            myDog.OnValueChange += wtc; 
+           
 
             myDog.Name = "Fido";
             myDog.Color = "Brown";

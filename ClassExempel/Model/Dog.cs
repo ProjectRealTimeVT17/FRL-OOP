@@ -21,7 +21,7 @@ namespace ClassExempel.Model
         public Dog() { }
 
         #region Fields
-        public WriteToConsole OnValueChange;
+        public event WriteToConsoleDelegate OnValueChange;
         #endregion
 
         #region Properties
@@ -45,7 +45,9 @@ namespace ClassExempel.Model
             {
                 if (value != _name)
                 {
-                    OnValueChange(value);
+                    WriteToConsoleEventArgs args = new WriteToConsoleEventArgs();
+                    args.Message = value;
+                    OnValueChange(this, args);
                     _name = value;
                 }
             }
@@ -72,7 +74,9 @@ namespace ClassExempel.Model
             {
                 if (!string.IsNullOrWhiteSpace(value))
                 {
-                    OnValueChange(value);
+                    WriteToConsoleEventArgs args = new WriteToConsoleEventArgs();
+                    args.Message = value;
+                    OnValueChange(this, args);
                     _color = value;
                 }
             }

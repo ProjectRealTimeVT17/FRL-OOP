@@ -6,5 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassExempel.Delegate
 {
-    public delegate string WriteToConsole(string message);
+    public class WriteToConsoleEventArgs : EventArgs
+    {
+        public string Message { get; set; }
+        public int IntMessage { get; set; }
+    }
 }
