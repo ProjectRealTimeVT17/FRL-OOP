@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Speech.Synthesis;
+using ClassExempel.Delegate;
 
 namespace ClassExempel.Model
 {
@@ -11,11 +12,17 @@ namespace ClassExempel.Model
     {
         public Dog(string name, string color, Gender gender, int age)
         {
-            _name = name;
+            Name = name;
             Color = color;
             _gender = gender;
             _dateOfBirth = DateTime.Now.AddYears((-1 * age));
         }
+
+        public Dog() { }
+
+        #region Fields
+        public WriteToConsole OnValueChange;
+        #endregion
 
         #region Properties
         private DateTime _dateOfBirth;
@@ -34,6 +41,14 @@ namespace ClassExempel.Model
             {
                 return _name;
             }
+            set
+            {
+                if (value != _name)
+                {
+                    OnValueChange(value);
+                    _name = value;
+                }
+            }
         }
 
         private Gender _gender;
@@ -44,8 +59,7 @@ namespace ClassExempel.Model
                 return _gender;
             }
         }
-
-        //public string Color { get; set; }
+        
         private string _color;
         public string Color
         {
@@ -54,10 +68,11 @@ namespace ClassExempel.Model
                 return _color;
             }
 
-            private set
+            set
             {
                 if (!string.IsNullOrWhiteSpace(value))
                 {
+                    OnValueChange(value);
                     _color = value;
                 }
             }
@@ -76,13 +91,13 @@ namespace ClassExempel.Model
         #endregion
 
 
-        public string Bark()
+        public string Bark(string bark)
         {
-            string bark = "Woff!";
             SpeechSynthesizer synth = new SpeechSynthesizer() { };
             //synth.SelectVoiceByHints(VoiceGender.Female);
             synth.Speak(bark);
             return bark;
         }
+        
     }
 }
