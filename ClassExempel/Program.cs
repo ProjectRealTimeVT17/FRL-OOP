@@ -14,15 +14,18 @@ namespace ClassExempel
         static void Main(string[] args)
         {
 
-            //Dog myDog = new Dog("Fido", "Brown", Gender.Male, 7);
-            Dog myDog = new Dog();
+            Animal myDog = new Dog();
+            Animal myCat = new Cat();
+
+            myCat.MakeSound();
+            myDog.MakeSound();
 
             Output output = new Output();
 
             WriteToConsoleDelegate wtc = new WriteToConsoleDelegate(output.ReportToBoss1);
             wtc += output.ReportToBoss2;
-            myDog.OnValueChange += wtc; 
-           
+            myDog.OnValueChange += wtc;
+
 
             myDog.Name = "Fido";
             myDog.Color = "Brown";

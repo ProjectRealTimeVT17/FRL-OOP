@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace ClassExempel.Model
 {
-    class Cat
+    class Cat : Animal
     {
-       
+
+        public override void MakeSound()
+        {
+            Console.WriteLine("Mjau Mjau");
+        }
     }
 
 }

@@ -8,7 +8,7 @@ using ClassExempel.Delegate;
 
 namespace ClassExempel.Model
 {
-    class Dog
+    class Dog : Animal
     {
         public Dog(string name, string color, Gender gender, int age)
         {
@@ -18,82 +18,15 @@ namespace ClassExempel.Model
             _dateOfBirth = DateTime.Now.AddYears((-1 * age));
         }
 
-        public Dog() { }
-
-        #region Fields
-        public event WriteToConsoleDelegate OnValueChange;
-        #endregion
-
-        #region Properties
-        private DateTime _dateOfBirth;
-        public int DateofBirth
+        public Dog()
         {
-            get
-            {
-                return _dateOfBirth.Year;
-            }
+               
         }
 
-        private string _name;
-        public string Name
+        public override void MakeSound()
         {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                if (value != _name)
-                {
-                    WriteToConsoleEventArgs args = new WriteToConsoleEventArgs();
-                    args.Message = value;
-                    OnValueChange(this, args);
-                    _name = value;
-                }
-            }
+            Console.WriteLine("Woff Woff");
         }
-
-        private Gender _gender;
-        public Gender Gender
-        {
-            get
-            {
-                return _gender;
-            }
-        }
-        
-        private string _color;
-        public string Color
-        {
-            get
-            {
-                return _color;
-            }
-
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-                    WriteToConsoleEventArgs args = new WriteToConsoleEventArgs();
-                    args.Message = value;
-                    OnValueChange(this, args);
-                    _color = value;
-                }
-            }
-        }
-
-        private int _age;
-        public int Age
-        {
-            get
-            {
-                _age = (DateTime.Now.AddYears(1).Year - _dateOfBirth.Year);
-                return _age;
-            }
-
-        }
-        #endregion
-
 
         public string Bark(string bark)
         {
