@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClassExempel.Interface;
 
 namespace ClassExempel.Model
 {
-    abstract class Animal
+    abstract class Animal : IAnimal
     {
         #region Fields
         public event WriteToConsoleDelegate OnValueChange;

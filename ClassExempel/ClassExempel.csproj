@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Delegate\WriteToConsoleDelegate.cs" />
     <Compile Include="Delegate\WriteToConsoleEventArgs.cs" />
+    <Compile Include="Interface\IAnimal.cs" />
     <Compile Include="Model\Animal.cs" />
     <Compile Include="Model\Cat.cs" />
     <Compile Include="Model\Dog.cs" />
